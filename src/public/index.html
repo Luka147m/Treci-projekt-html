@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <title>Breakout Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="popup" id="popup">
+        <p id="popupText">Kako igrati?<br>
+            Koristi strelice ili tipke A i D za pomicanje palice.<br>Sretno!
+        </p>
+        <button id="startButton" class="startButton">Pokreni igru</button>
+        <button id="restartButton" class="restartButton" style="display: none;">Igraj ponovno</button>
+        <button id="settingsButton" class="settingsButton">Postavke</button>
+    </div>
+
+    <div id="settingsDiv" class="settings">
+        <div class="settings-content-div">
+            <h2>Postavke igre</h2>
+            <label for="rows">Broj redova:</label>
+            <input type="number" id="rows" value="8" min="1" max="8"><br>
+
+            <label for="columns">Broj stupaca:</label>
+            <input type="number" id="columns" value="8" min="1" max="14"><br>
+
+            <label for="ballRadius">Loptica:</label>
+            <input type="number" id="ballRadius" value="10" min="5" max="10"><br>
+
+            <label for="maxSpeed">Brzina:</label>
+            <input type="number" id="maxSpeed" value="4" min="1" max="10"><br>
+            
+            <label for="paddleSpeed">Brzina palice:</label>
+            <input type="number" id="paddleSpeed" value="10" min="5" max="20"><br>
+
+            <label for="paddleSensitivity">Osjetljivost palice:</label>
+            <input type="number" id="paddleSensitivity" value="3" min="1" max="6"><br>
+
+            <button id="applySettings" class="applySettings" >Primijeni</button>
+            <button id="closeSettings" class="closeSettings">Zatvori</button>
+        </div>
+    </div>
+
+    <canvas id="game"></canvas>
+    <script src="game.js" defer></script>
+</body>
+</html>
