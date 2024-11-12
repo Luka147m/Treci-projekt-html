@@ -17,9 +17,22 @@ app.get('/', (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 })
 
-app.use((req, res) => {
+app.use('/fonts', express.static(path.join(__dirname, '../dist/public/fonts'), {
+    setHeaders: (res, filePath) => {
+        if (filePath.endsWith('.ttf')) {
+            res.setHeader('Content-Type', 'font/ttf');
+        }
+    },
+}));
+
+app.use((req: Request, res: Response) => {
     res.redirect('/');
 });
+
+app.use((req: Request, res: Response) => {
+    res.status(404).send('Page Not Found');
+});
+
 
 if (externalUrl) {
     const hostname = '0.0.0.0';
