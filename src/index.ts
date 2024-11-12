@@ -8,14 +8,8 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 app.use(express.static(path.join(__dirname, '../dist/public')));
-
-const externalUrl = process.env.EXTERNAL_URL || null;
-const port = externalUrl && process.env.PORT ? parseInt(process.env.PORT) : 8080;
-
-app.get('/', (req: Request, res: Response) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
-})
 
 app.use('/fonts', express.static(path.join(__dirname, '../dist/public/fonts'), {
     setHeaders: (res, filePath) => {
@@ -25,14 +19,17 @@ app.use('/fonts', express.static(path.join(__dirname, '../dist/public/fonts'), {
     },
 }));
 
-app.use((req: Request, res: Response) => {
-    res.redirect('/');
-});
+app.get('/', (req: Request, res: Response) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+})
 
 app.use((req: Request, res: Response) => {
     res.status(404).send('Page Not Found');
 });
 
+
+const externalUrl = process.env.EXTERNAL_URL || null;
+const port = externalUrl && process.env.PORT ? parseInt(process.env.PORT) : 8080;
 
 if (externalUrl) {
     const hostname = '0.0.0.0';
