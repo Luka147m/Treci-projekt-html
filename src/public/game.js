@@ -178,9 +178,9 @@ function drawScore() {
   ctx.font = '32px "Arcade", Arial, sans-serif';
   ctx.fillStyle = '#FFFFFF';
   ctx.textAlign = 'left';
-  ctx.fillText('Bodovi: ' + score, 0, 32);
+  ctx.fillText('Breakout', 0, 32);
   ctx.textAlign = 'right';
-  ctx.fillText('Rekord: ' + max_score, canvas.width, 32);
+  ctx.fillText('Rekord: ' + max_score + ' Bodovi: ' + score, canvas.width, 32);
 }
 
 // Funckija za okvir igre, granice odbijanja
@@ -198,7 +198,7 @@ function drawBorder() {
   ctx.closePath();
 }
 
-// Funkcija za kreiranje cigli 2d array
+// Funkcija za kreiranje cigli 2d array, tako pratimo koja cigla je pogodena
 function createBricks() {
   for (let c = 0; c < COLUMNS; c++) {
     bricks[c] = [];
