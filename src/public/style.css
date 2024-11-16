@@ -48,6 +48,10 @@ canvas {
   width: 40%;
 }
 
+.popup p {
+  line-height: 1.2;
+}
+
 .startButton,
 .restartButton,
 .settingsButton,
